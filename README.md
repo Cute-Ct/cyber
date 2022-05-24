@@ -34,13 +34,13 @@ cpplint errors will be displayed in the `test.log` file.
 
 ## Installation
 
-help needed:
-
-`bazel build :install` currently has errors like:
+to install the cyber tools:
 ```sh
-ERROR: cyber/tools/BUILD:7:1: name 'install' is not defined
-ERROR: cyber/BUILD:15:8: no such target '//tools:install': target 'install' not declared in package 'tools' defined by cyber/tools/BUILD and referenced by '//:install'
-ERROR: Analysis of target '//:install' failed; build aborted: Analysis failed
+bazel run //tools:install /usr/local/
 ```
+[help needed] the command above will copy file to `/usr/local` which needs `sudo`, but `sudo bazel run //tools:install /usr/local/` will run whole bazel process as root.
 
-
+the install python script will need patchelf,
+```sh
+sudo apt install patchelf
+```
