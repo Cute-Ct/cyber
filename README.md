@@ -17,6 +17,8 @@ Modified version of ApolloAuto/apollo/cyber. Baseline version is apollo v7.0.0.
 ```sh
 ./install_deps.sh
 ```
+This script will download `bazel` (`bazel-4.2.2-linux-arm64`) from github and its size is >100M.  The file can be put into `cyber/build/installers` to save downloading time.
+
 ## build
 
 ```sh

@@ -72,7 +72,7 @@ elif [[ "$TARGET_ARCH" == "aarch64" ]]; then
   chmod a+x "/usr/local/bin/bazel"
   # rm -rf "${ARM64_BINARY}"
 
-  cp /opt/apollo/rcfiles/bazel_completion.bash /etc/bash_completion.d/bazel
+  cp ../rcfiles/bazel_completion.bash /etc/bash_completion.d/bazel
 
   PKG_NAME="buildifier-linux-arm64"
   CHECKSUM="54c48bdf5f91892bc6c059d9cfc659f634e890ee382b4cf298789f5788ed2b20"

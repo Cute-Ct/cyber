@@ -69,7 +69,9 @@ if [[ "${TARGET_ARCH}" == "x86_64" ]]; then
     download_if_not_cached "${PKG_NAME}" "${CHECKSUM}" "${DOWNLOAD_LINK}"
 
     tar xzf ${PKG_NAME}
-    rm -r "${DEST_DIR}"
+    if [ -e "${DEST_DIR}" ]; then
+        rm -r "${DEST_DIR}"
+    fi
     mv fast-rtps-1.5.0-1 "${DEST_DIR}"
     #rm -rf ${PKG_NAME}
 else # aarch64
@@ -79,7 +81,9 @@ else # aarch64
 
     download_if_not_cached "${PKG_NAME}" "${CHECKSUM}" "${DOWNLOAD_LINK}"
     tar xzf ${PKG_NAME}
-    rm -r "${DEST_DIR}"
+    if [ -e "${DEST_DIR}" ]; then
+        rm -r "${DEST_DIR}"
+    fi
     mv fast-rtps-1.5.0-1 "${DEST_DIR}"
     #rm -rf ${PKG_NAME}
 fi
