@@ -23,12 +23,12 @@ exports_files([
 install(
     name = "install",
     data = [
-        ":.release.bash",
+        ".release.bash",
         ":cyber_conf",
         "//python/cyber_py3:runtime_files",
     ],
     rename = {
-        "cyber/.release.bash": "setup.bash",
+        ".release.bash": "setup.bash",
     },
     deps = [
         ":pb_cyber",
@@ -36,6 +36,7 @@ install(
         "//examples:install",
         "//python/internal:install",
         "//tools:install",
+        "//scripts:install",
     ],
 )
 

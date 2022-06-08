@@ -11,6 +11,7 @@ Modified version of ApolloAuto/apollo/cyber. Baseline version is apollo v7.0.0.
 | -------------------------------- | ----------- |
 | /tools                           | merged into /build       |
 | /BUILD and /cyber/BUILD          | merged int /BUILD        |
+| /scripts (files needed)          | /scripts
 
 
 ## Install prerequisites and dependencies
@@ -81,3 +82,18 @@ Installing python script will need patchelf,
 ```sh
 sudo apt install patchelf
 ```
+
+## Run Example
+First, initialize some env variables:
+```sh
+source /opt/cyber/setup.bash
+```
+then run
+```sh
+/opt/cyber/examples/talker
+```
+or 
+```sh
+/opt/cyber/examples/listener
+```
+Log messages will be displayed. To turn off the log message, edit the config value in `/opt/cyber/setup.bash`.
