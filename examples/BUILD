@@ -28,7 +28,7 @@ install(
         ":talker",
         ":listener",
     ],
-    runtime_dest = "cyber/examples",
+    runtime_dest = "examples",
     deps = [
         "//examples/common_component_example:install",
         "//examples/timer_component_example:install",

@@ -55,7 +55,7 @@ install(
     ],
     # We want to install channel_*_writer into runtime_dest
     # rather than bin/
-    runtime_dest = "cyber/examples/common_component_example",
+    runtime_dest = "examples/common_component_example",
     targets = [
         ":channel_prediction_writer",
         ":channel_test_writer",
