@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -52,3 +53,19 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":shared_library_include",
+    ],
+)
+
+install_files(
+    name = "shared_library_include",
+    dest = "include/class_loader/shared_library",
+    files = [
+        ":shared_library.h",
+        ":exceptions.h",
+    ],
+)

@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -45,3 +46,20 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":common_include",
+    ],
+)
+
+# install file like "/opt/cyber/include/transport/common/identity.h"
+install_files(
+    name = "common_include",
+    dest = "include/transport/common",
+    files = [
+        ":identity.h",
+        ":endpoint.h",
+    ],
+)

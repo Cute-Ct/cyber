@@ -2,6 +2,7 @@
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@rules_cc//cc:defs.bzl", "cc_proto_library")
 load("//build:python_rules.bzl", "py_proto_library")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -350,3 +351,28 @@ py_proto_library(
     ],
 )
 
+install(
+    name = "install",
+    deps = [
+        ":proto_include",
+    ],
+)
+
+install_files(
+    name = "proto_include",
+    dest = "include/proto",
+    files = [
+        ":cyber_conf.proto",
+        ":scheduler_conf.proto",
+        ":transport_conf.proto",
+        ":run_mode_conf.proto",
+        ":perf_conf.proto",
+        ":classic_conf.proto",
+        ":choreography_conf.proto",
+        ":component_conf.proto",
+        ":qos_profile.proto",
+        ":topology_change.proto",
+        ":role_attributes.proto",
+        ":proto_desc.proto",
+    ],
+)

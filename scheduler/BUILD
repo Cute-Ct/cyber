@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -166,3 +167,24 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":scheduler_include",
+    ],
+)
+
+# install file like "/opt/cyber/include/scheduler/scheduler_factory.h"
+install_files(
+    name = "scheduler_include",
+    dest = "include/scheduler",
+    files = [
+        ":scheduler_factory.h",
+        "policy/scheduler_choreography.h",
+        "policy/scheduler_classic.h",
+        "common/mutex_wrapper.h",
+        "common/pin_thread.h",
+        ":scheduler.h",
+    ],
+)

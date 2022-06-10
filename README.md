@@ -16,8 +16,15 @@ Modified version of ApolloAuto/apollo/cyber. Baseline version is apollo v7.0.0.
 
 ## Install prerequisites and dependencies
 ```sh
+sudo apt update
+sudo apt install python3-testresources
+```
+then
+```sh
 ./install_deps.sh
 ```
+### [for arm64 only]
+
 This script will download `bazel` (`bazel-4.2.2-linux-arm64`) from github and its size is >100M.  The file can be put into `cyber/build/installers` to save downloading time.
 
 ## build
@@ -57,8 +64,11 @@ it will install tools into `/opt/cyber` like:
 to install the cyber:
 ```sh
 bazel build :install
+
+sudo apt install patchelf
 bazel run :install /opt/cyber/
 ```
+
 During build, if there is any bazel fetching error like this:
 ```sh
 INFO: Repository six instantiated at:
@@ -77,10 +87,11 @@ ERROR: An error occurred during the fetch of repository 'six':
 urls = ["file:///home/nvidia/gitlab/cyber/build/bazel_tools/six-1.12.0.tar.gz"],
 ```
 
-
-Installing python script will need patchelf,
+### Install proto file
+[temperary solution]
+in `/opt/cyber/include` run 
 ```sh
-sudo apt install patchelf
+protoc proto/*.proto --cpp_out=.
 ```
 
 ## Run Example

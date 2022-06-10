@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -68,3 +69,20 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":croutine_include",
+    ],
+)
+
+install_files(
+    name = "croutine_include",
+    dest = "include/croutine",
+    files = [
+        ":routine_factory.h",
+        ":croutine.h",
+        ":detail/routine_context.h",
+    ],
+)

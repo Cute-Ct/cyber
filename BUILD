@@ -37,12 +37,13 @@ install(
         "//python/internal:install",
         "//tools:install",
         "//scripts:install",
+        ":cyber_includes",
     ],
 )
 
 install_files(
     name = "pb_cyber",
-    dest = "cyber",
+    dest = "",
     files = [
         "//proto:record_py_pb2",
     ],
@@ -137,6 +138,45 @@ filegroup(
     srcs = glob([
         "conf/*.conf",
     ]),
+)
+
+install(
+    name = "cyber_includes",
+    data = [
+    ],
+    deps = [
+        ":cyber_include",
+        "//base:install",
+        "//blocker:install",
+        "//common:install",
+        "//component:install",
+        "//proto:install",
+        "//class_loader:install",
+        "//node:install",
+        "//croutine:install",
+        "//data:install",
+        "//event:install",
+        "//time:install",
+        "//transport:install",
+        "//message:install",
+        "//service_discovery:install",
+        "//task:install",
+        "//scheduler:install",
+        "//service:install",
+        "//timer:install",
+    ],
+)
+
+# install file like "/opt/cyber/include/cyber.h"
+install_files(
+    name = "cyber_include",
+    dest = "include",
+    files = [
+        "//:cyber.h",
+        "//:binary.h",
+        "//:state.h",
+        "//:init.h",
+    ],
 )
 
 # todo fix thes bazel errors

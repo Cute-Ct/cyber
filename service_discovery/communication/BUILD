@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -26,3 +27,19 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":communication_include",
+    ],
+)
+
+install_files(
+    name = "communication_include",
+    dest = "include/service_discovery/communication",
+    files = [
+        ":participant_listener.h",
+        ":subscriber_listener.h",
+    ],
+)

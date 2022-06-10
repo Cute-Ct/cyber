@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -101,3 +102,22 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":dispatcher_include",
+    ],
+)
+
+# install file like "/opt/cyber/include/transport/dispatcher/log.h"
+install_files(
+    name = "dispatcher_include",
+    dest = "include/transport/dispatcher",
+    files = [
+        ":dispatcher.h",
+        ":intra_dispatcher.h",
+        ":rtps_dispatcher.h",
+        ":shm_dispatcher.h",
+    ],
+)

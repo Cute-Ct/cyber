@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -51,3 +52,21 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":class_loader_include",
+        "//class_loader/utility:install",
+        "//class_loader/shared_library:install",
+    ],
+)
+
+install_files(
+    name = "class_loader_include",
+    dest = "include/class_loader",
+    files = [
+        ":class_loader.h",
+        ":class_loader_register_macro.h",
+    ],
+)

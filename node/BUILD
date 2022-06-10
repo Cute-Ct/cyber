@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -145,3 +146,24 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":node_include",
+    ],
+)
+
+install_files(
+    name = "node_include",
+    dest = "include/node",
+    files = [
+        ":node.h",
+        ":node_channel_impl.h",
+        ":reader.h",
+        ":reader_base.h",
+        "writer.h",
+        "writer_base.h",
+        "node_service_impl.h",
+    ],
+)

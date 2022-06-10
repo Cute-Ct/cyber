@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -186,3 +187,24 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":base_include",
+    ],
+)
+
+install_files(
+    name = "base_include",
+    dest = "include/base",
+    files = [
+        ":macros.h",
+        ":atomic_hash_map.h",
+        ":atomic_rw_lock.h",
+        ":rw_lock_guard.h",
+        ":bounded_queue.h",
+        ":wait_strategy.h",
+        ":signal.h",
+    ],
+)

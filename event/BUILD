@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -27,3 +28,19 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":event_include",
+    ],
+)
+
+install_files(
+    name = "event_include",
+    dest = "include/event",
+    files = [
+        ":perf_event_cache.h",
+        ":perf_event.h",
+    ],
+)

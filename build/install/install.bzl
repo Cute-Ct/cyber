@@ -406,6 +406,7 @@ def install(tags = [], **kwargs):
         **kwargs
     )
 
+# buildifier: disable=no-effect
 """Generate installation information for various artifacts.
 
 This generates installation information for various artifacts, including
@@ -510,6 +511,7 @@ def install_files(tags = [], **kwargs):
         **kwargs
     )
 
+# buildifier: disable=no-effect
 """Generate installation information for files.
 
 This generates installation information for a list of files. By default, any

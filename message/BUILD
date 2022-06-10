@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -116,3 +117,26 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":message_include",
+    ],
+)
+
+# install file like "/opt/cyber/include/message/message_traits.h"
+install_files(
+    name = "message_include",
+    dest = "include/message",
+    files = [
+        ":message_traits.h",
+        ":message_header.h",
+        ":protobuf_traits.h",
+        ":protobuf_factory.h",
+        ":py_message_traits.h",
+        ":py_message.h",
+        ":raw_message_traits.h",
+        ":raw_message.h",
+    ],
+)

@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -142,3 +143,25 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":shm_include",
+    ],
+)
+
+install_files(
+    name = "shm_include",
+    dest = "include/transport/shm",
+    files = [
+        ":notifier_factory.h",
+        ":notifier_base.h",
+        ":readable_info.h",
+        ":segment_factory.h",
+        ":segment.h",
+        ":block.h",
+        ":shm_conf.h",
+        ":state.h",
+    ],
+)

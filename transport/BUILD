@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -38,3 +39,26 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":transport_include",
+        "//transport/dispatcher:install",
+        "//transport/message:install",
+        "//transport/common:install",
+        "//transport/rtps:install",
+        "//transport/shm:install",
+        "//transport/qos:install",
+        "//transport/receiver:install",
+        "//transport/transmitter:install",
+    ],
+)
+
+install_files(
+    name = "transport_include",
+    dest = "include/transport",
+    files = [
+        ":transport.h",
+    ],
+)

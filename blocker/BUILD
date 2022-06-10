@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -56,3 +57,21 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":blocker_include",
+    ],
+)
+
+install_files(
+    name = "blocker_include",
+    dest = "include/blocker",
+    files = [
+        ":blocker.h",
+        ":blocker_manager.h",
+        ":intra_reader.h",
+        "intra_writer.h",
+    ],
+)

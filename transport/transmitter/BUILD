@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -56,3 +57,22 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":transmitter_include",
+    ],
+)
+
+install_files(
+    name = "transmitter_include",
+    dest = "include/transport/transmitter",
+    files = [
+        ":hybrid_transmitter.h",
+        ":intra_transmitter.h",
+        ":transmitter.h",
+        ":rtps_transmitter.h",
+        ":shm_transmitter.h",
+    ],
+)

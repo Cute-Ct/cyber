@@ -163,6 +163,7 @@ def _remove_prefix(path, prefix):
     """
     return __remove_prefix(path.split("/"), prefix.split("/"))
 
+# buildifier: disable=function-docstring-args
 def output_path(ctx, input_file, strip_prefix, package_root = None):
     """Compute "output path".
 

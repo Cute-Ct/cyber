@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -32,3 +33,20 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":task_include",
+    ],
+)
+
+# install file like "/opt/cyber/include/task/task.h"
+install_files(
+    name = "task_include",
+    dest = "include/task",
+    files = [
+        ":task.h",
+        ":task_manager.h",
+    ],
+)

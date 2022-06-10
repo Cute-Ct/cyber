@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -127,3 +128,25 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":common_include",
+    ],
+)
+
+# install file like "/opt/cyber/include/common/log.h"
+install_files(
+    name = "common_include",
+    dest = "include/common",
+    files = [
+        ":log.h",
+        ":global_data.h",
+        ":macros.h",
+        ":util.h",
+        ":types.h",
+        ":environment.h",
+        ":file.h",
+    ],
+)

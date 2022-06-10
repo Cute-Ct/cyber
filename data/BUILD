@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -122,3 +123,25 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":data_include",
+    ],
+)
+
+install_files(
+    name = "data_include",
+    dest = "include/data",
+    files = [
+        ":data_visitor.h",
+        ":channel_buffer.h",
+        ":data_notifier.h",
+        ":cache_buffer.h",
+        ":data_dispatcher.h",
+        ":data_visitor_base.h",
+        "fusion/all_latest.h",
+        "fusion/data_fusion.h",
+    ],
+)

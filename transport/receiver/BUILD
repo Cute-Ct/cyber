@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -57,3 +58,22 @@ cc_library(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":receiver_include",
+    ],
+)
+
+install_files(
+    name = "receiver_include",
+    dest = "include/transport/receiver",
+    files = [
+        ":hybrid_receiver.h",
+        ":intra_receiver.h",
+        ":receiver.h",
+        ":rtps_receiver.h",
+        ":shm_receiver.h",
+    ],
+)
