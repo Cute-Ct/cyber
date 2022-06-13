@@ -67,6 +67,7 @@ install(
     name = "install",
     deps = [
         ":message_include",
+        ":message_lib",
     ],
 )
 
@@ -78,5 +79,16 @@ install_files(
         ":message_info.h",
         ":history.h",
         ":history_attributes.h",
+    ],
+)
+
+install_files(
+    name = "message_lib",
+    dest = "lib/transport/message",
+    files = [
+        #":listener_handler.h",
+        ":message_info",
+        #":history.h",
+        #":history_attributes.h",
     ],
 )

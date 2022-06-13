@@ -44,6 +44,7 @@ install(
     name = "install",
     deps = [
         ":transport_include",
+        ":transport_lib",
         "//transport/dispatcher:install",
         "//transport/message:install",
         "//transport/common:install",
@@ -60,5 +61,13 @@ install_files(
     dest = "include/transport",
     files = [
         ":transport.h",
+    ],
+)
+
+install_files(
+    name = "transport_lib",
+    dest = "lib/transport",
+    files = [
+        ":transport",
     ],
 )

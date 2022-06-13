@@ -74,6 +74,7 @@ install(
     name = "install",
     deps = [
         ":croutine_include",
+        ":croutine_lib",
     ],
 )
 
@@ -84,5 +85,16 @@ install_files(
         ":routine_factory.h",
         ":croutine.h",
         ":detail/routine_context.h",
+    ],
+)
+
+install_files(
+    name = "croutine_lib",
+    dest = "lib/croutine",
+    files = [
+        #":routine_factory.h",
+        ":croutine",
+        ":swap",
+        ":routine_context",
     ],
 )

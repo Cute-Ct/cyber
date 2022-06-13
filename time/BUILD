@@ -82,6 +82,7 @@ install(
     name = "install",
     deps = [
         ":time_include",
+        ":time_lib",
     ],
 )
 
@@ -92,5 +93,16 @@ install_files(
         ":time.h",
         ":duration.h",
         "rate.h",
+    ],
+)
+
+install_files(
+    name = "time_lib",
+    dest = "lib/time",
+    files = [
+        ":rate",
+        ":time",
+        ":duration",
+        ":clock",
     ],
 )

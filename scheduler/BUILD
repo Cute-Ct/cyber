@@ -172,6 +172,7 @@ install(
     name = "install",
     deps = [
         ":scheduler_include",
+        ":scheduler_lib",
     ],
 )
 
@@ -186,5 +187,22 @@ install_files(
         "common/mutex_wrapper.h",
         "common/pin_thread.h",
         ":scheduler.h",
+    ],
+)
+
+install_files(
+    name = "scheduler_lib",
+    dest = "lib/scheduler",
+    files = [
+        ":scheduler_factory",
+        ":scheduler_choreography",
+        ":scheduler_classic",
+        # "common/mutex_wrapper.h",
+        ":pin_thread",
+        ":scheduler",
+        ":processor",
+        ":classic_context",
+        ":processor_context",
+        ":choreography_context",
     ],
 )

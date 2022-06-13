@@ -97,7 +97,7 @@ cc_library(
     deps = [
         ":block",
         ":shm_conf",
-        ":state",
+        ":shmstate",
         "//common:log",
         "//common:util",
     ],
@@ -126,7 +126,7 @@ cc_library(
 )
 
 cc_library(
-    name = "state",
+    name = "shmstate",
     srcs = ["state.cc"],
     hdrs = ["state.h"],
 )
@@ -148,6 +148,7 @@ install(
     name = "install",
     deps = [
         ":shm_include",
+        ":shm_lib",
     ],
 )
 
@@ -163,5 +164,24 @@ install_files(
         ":block.h",
         ":shm_conf.h",
         ":state.h",
+    ],
+)
+
+install_files(
+    name = "shm_lib",
+    dest = "lib/transport/shm",
+    files = [
+        ":notifier_factory",
+        # ":notifier_base.h",
+        ":condition_notifier",
+        ":readable_info",
+        ":segment_factory",
+        ":segment",
+        ":xsi_segment",
+        ":block",
+        ":shm_conf",
+        ":shmstate",
+        ":posix_segment",
+        ":multicast_notifier",
     ],
 )

@@ -57,6 +57,7 @@ install(
     name = "install",
     deps = [
         ":timer_include",
+        ":timer_lib",
     ],
 )
 
@@ -69,5 +70,16 @@ install_files(
         ":timing_wheel.h",
         "timer_bucket.h",
         "timer_task.h",
+    ],
+)
+
+install_files(
+    name = "timer_lib",
+    dest = "lib/timer",
+    files = [
+        # ":timer.h",
+        ":timing_wheel",
+        # "timer_bucket.h",
+        # "timer_task.h",
     ],
 )

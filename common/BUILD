@@ -133,6 +133,7 @@ install(
     name = "install",
     deps = [
         ":common_include",
+        ":common_lib",
     ],
 )
 
@@ -148,5 +149,19 @@ install_files(
         ":types.h",
         ":environment.h",
         ":file.h",
+    ],
+)
+
+install_files(
+    name = "common_lib",
+    dest = "lib/common",
+    files = [
+        # ":log.h",
+        ":global_data",
+        # ":macros.h",
+        # ":util.h",
+        # ":types.h",
+        # ":environment.h",
+        ":file",
     ],
 )

@@ -151,6 +151,7 @@ install(
     name = "install",
     deps = [
         ":node_include",
+        ":node_lib",
     ],
 )
 
@@ -167,3 +168,18 @@ install_files(
         "node_service_impl.h",
     ],
 )
+
+install_files(
+    name = "node_lib",
+    dest = "lib/node",
+    files = [
+        ":node",
+        # ":node_channel_impl.h",
+        # ":reader.h",
+        # ":reader_base.h",
+        # "writer.h",
+        # "writer_base.h",
+        # "node_service_impl.h",
+    ],
+)
+

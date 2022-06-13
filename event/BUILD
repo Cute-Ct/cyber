@@ -33,6 +33,7 @@ install(
     name = "install",
     deps = [
         ":event_include",
+        ":event_lib",
     ],
 )
 
@@ -41,6 +42,17 @@ install_files(
     dest = "include/event",
     files = [
         ":perf_event_cache.h",
+        ":perf_event.h",
+    ],
+)
+
+
+
+install_files(
+    name = "event_lib",
+    dest = "lib/event",
+    files = [
+        ":perf_event_cache",
         ":perf_event.h",
     ],
 )

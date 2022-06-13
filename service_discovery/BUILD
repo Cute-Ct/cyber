@@ -204,6 +204,7 @@ install(
     name = "install",
     deps = [
         ":service_discovery_include",
+        ":service_discovery_lib",
         "//service_discovery/communication:install",
     ],
 )
@@ -222,5 +223,22 @@ install_files(
         "container/multi_value_warehouse.h",
         "container/warehouse_base.h",
         "container/single_value_warehouse.h",
+    ],
+)
+
+install_files(
+    name = "service_discovery_lib",
+    dest = "lib/service_discovery",
+    files = [
+        ":role",
+        ":topology_manager",
+        ":channel_manager",
+        ":manager",
+        ":node_manager",
+        ":service_manager",
+        ":graph",
+        ":multi_value_warehouse",
+        # "container/warehouse_base.h",
+        ":single_value_warehouse",
     ],
 )

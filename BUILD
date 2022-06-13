@@ -31,13 +31,13 @@ install(
         ".release.bash": "setup.bash",
     },
     deps = [
-        ":pb_cyber",
-        "//mainboard:install",
-        "//examples:install",
-        "//python/internal:install",
-        "//tools:install",
-        "//scripts:install",
-        ":cyber_includes",
+        # ":pb_cyber",
+        # "//mainboard:install",
+        # "//examples:install",
+        # "//python/internal:install",
+        # "//tools:install",
+        # "//scripts:install",        
+        ":cyber_install",
     ],
 )
 
@@ -140,12 +140,18 @@ filegroup(
     ]),
 )
 
+### new for openapollo ###
+
+# install file like "/opt/cyber/include/cyber.h"
+# install file like "/opt/cyber/lib/libinit.so"
+
 install(
-    name = "cyber_includes",
+    name = "cyber_install",
     data = [
     ],
     deps = [
         ":cyber_include",
+        ":cyber_lib",
         "//base:install",
         "//blocker:install",
         "//common:install",
@@ -164,10 +170,11 @@ install(
         "//scheduler:install",
         "//service:install",
         "//timer:install",
+        "//sysmo:install",
+        "//logger:install",
     ],
 )
 
-# install file like "/opt/cyber/include/cyber.h"
 install_files(
     name = "cyber_include",
     dest = "include",
@@ -176,6 +183,17 @@ install_files(
         "//:binary.h",
         "//:state.h",
         "//:init.h",
+    ],
+)
+
+install_files(
+    name = "cyber_lib",
+    dest = "lib",
+    files = [
+        "//:init",
+        "//:cyber_core",
+        "//:binary",
+        "//:state",
     ],
 )
 

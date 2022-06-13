@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
 load("//build:cpplint.bzl", "cpplint")
+load("//build/install:install.bzl", "install", "install_files")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -85,3 +86,20 @@ cc_test(
 )
 
 cpplint()
+
+install(
+    name = "install",
+    deps = [
+        ":logger_lib",
+    ],
+)
+
+install_files(
+    name = "logger_lib",
+    dest = "lib/logger",
+    files = [
+        ":async_logger",
+        ":log_file_object",
+        ":logger_util",
+    ],
+)

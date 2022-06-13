@@ -355,6 +355,7 @@ install(
     name = "install",
     deps = [
         ":proto_include",
+        ":proto_lib",
     ],
 )
 
@@ -362,6 +363,7 @@ install_files(
     name = "proto_include",
     dest = "include/proto",
     files = [
+        ":clock.proto",
         ":cyber_conf.proto",
         ":scheduler_conf.proto",
         ":transport_conf.proto",
@@ -374,5 +376,24 @@ install_files(
         ":topology_change.proto",
         ":role_attributes.proto",
         ":proto_desc.proto",
+    ],
+)
+
+install_files(
+    name = "proto_lib",
+    dest = "lib/proto",
+    files = [
+        ":clock_cc_proto",
+        ":scheduler_conf_cc_proto",
+        ":transport_conf_cc_proto",
+        ":run_mode_conf_cc_proto",
+        ":perf_conf_cc_proto",
+        ":classic_conf_cc_proto",
+        ":choreography_conf_cc_proto",
+        ":cyber_conf_cc_proto",
+        ":qos_profile_cc_proto",
+        ":topology_change_cc_proto",
+        ":role_attributes_cc_proto",
+        ":proto_desc_cc_proto",
     ],
 )

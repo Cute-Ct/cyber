@@ -27,6 +27,7 @@ install(
     name = "install",
     deps = [
         ":qos_include",
+        ":qos_lib",
     ],
 )
 
@@ -35,5 +36,13 @@ install_files(
     dest = "include/transport/qos",
     files = [
         ":qos_profile_conf.h",
+    ],
+)
+
+install_files(
+    name = "qos_lib",
+    dest = "lib/transport/qos",
+    files = [
+        ":qos_profile_conf",
     ],
 )

@@ -51,6 +51,7 @@ install(
     name = "install",
     deps = [
         ":common_include",
+        ":common_lib",
     ],
 )
 
@@ -63,3 +64,13 @@ install_files(
         ":endpoint.h",
     ],
 )
+
+install_files(
+    name = "common_lib",
+    dest = "lib/transport/common",
+    files = [
+        ":identity",
+        ":endpoint",
+    ],
+)
+

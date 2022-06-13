@@ -75,6 +75,7 @@ install(
     name = "install",
     deps = [
         ":rtps_include",
+        ":rtps_lib",
     ],
 )
 
@@ -87,5 +88,17 @@ install_files(
         ":underlay_message_type.h",
         ":underlay_message.h",
         ":sub_listener.h",
+    ],
+)
+
+install_files(
+    name = "rtps_lib",
+    dest = "lib/transport/rtps",
+    files = [
+        ":attributes_filler",
+        ":participant",
+        ":underlay_message_type",
+        ":underlay_message",
+        ":sub_listener",
     ],
 )

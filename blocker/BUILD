@@ -62,6 +62,7 @@ install(
     name = "install",
     deps = [
         ":blocker_include",
+        ":blocker_lib",
     ],
 )
 
@@ -73,5 +74,16 @@ install_files(
         ":blocker_manager.h",
         ":intra_reader.h",
         "intra_writer.h",
+    ],
+)
+
+install_files(
+    name = "blocker_lib",
+    dest = "lib/blocker",
+    files = [
+        # ":blocker.h",
+        ":blocker_manager",
+        # ":intra_reader.h",
+        # "intra_writer.h",
     ],
 )

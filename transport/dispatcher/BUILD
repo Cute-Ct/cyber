@@ -107,6 +107,7 @@ install(
     name = "install",
     deps = [
         ":dispatcher_include",
+        ":dispatcher_lib",
     ],
 )
 
@@ -119,5 +120,16 @@ install_files(
         ":intra_dispatcher.h",
         ":rtps_dispatcher.h",
         ":shm_dispatcher.h",
+    ],
+)
+
+install_files(
+    name = "dispatcher_lib",
+    dest = "lib/transport/dispatcher",
+    files = [
+        ":dispatcher",
+        ":intra_dispatcher",
+        ":rtps_dispatcher",
+        ":shm_dispatcher",
     ],
 )

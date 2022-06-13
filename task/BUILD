@@ -38,6 +38,7 @@ install(
     name = "install",
     deps = [
         ":task_include",
+        ":task_lib",
     ],
 )
 
@@ -48,5 +49,14 @@ install_files(
     files = [
         ":task.h",
         ":task_manager.h",
+    ],
+)
+
+install_files(
+    name = "task_lib",
+    dest = "lib/task",
+    files = [
+        #":task.h",
+        ":task_manager",
     ],
 )

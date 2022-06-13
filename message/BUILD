@@ -122,6 +122,7 @@ install(
     name = "install",
     deps = [
         ":message_include",
+        ":message_lib",
     ],
 )
 
@@ -138,5 +139,20 @@ install_files(
         ":py_message.h",
         ":raw_message_traits.h",
         ":raw_message.h",
+    ],
+)
+
+install_files(
+    name = "message_lib",
+    dest = "lib/message",
+    files = [
+        # ":message_traits.h",
+        # ":message_header.h",
+        # ":protobuf_traits.h",
+        ":protobuf_factory",
+        # ":py_message_traits.h",
+        # ":py_message.h",
+        # ":raw_message_traits.h",
+        # ":raw_message.h",
     ],
 )

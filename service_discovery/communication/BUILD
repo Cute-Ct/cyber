@@ -32,6 +32,7 @@ install(
     name = "install",
     deps = [
         ":communication_include",
+         ":communication_lib",
     ],
 )
 
@@ -41,5 +42,14 @@ install_files(
     files = [
         ":participant_listener.h",
         ":subscriber_listener.h",
+    ],
+)
+
+install_files(
+    name = "communication_lib",
+    dest = "lib/service_discovery/communication",
+    files = [
+        ":participant_listener",
+        ":subscriber_listener",
     ],
 )
